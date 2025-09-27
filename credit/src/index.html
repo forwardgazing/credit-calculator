@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кредитный калькулятор</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">💰 Кредитный калькулятор</h1>
+            <p class="subtitle">Расчет ежемесячных выплат с графиком погашения</p>
+        </header>
+
+        <main class="main-content">
+            <section class="input-section">
+                <div class="form-container">
+                    <h2>Параметры кредита</h2>
+                    
+                    <div class="input-group">
+                        <label for="loanAmount">Сумма кредита (руб):</label>
+                        <div class="input-with-icon">
+                            <span class="icon">₽</span>
+                            <input type="number" id="loanAmount" min="1000" max="10000000" value="1000000" step="1000">
+                        </div>
+                        <input type="range" id="loanAmountRange" min="1000" max="10000000" value="1000000" step="1000">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="loanTerm">Срок кредита (лет):</label>
+                        <div class="input-with-icon">
+                            <span class="icon">📅</span>
+                            <input type="number" id="loanTerm" min="1" max="5" value="3" step="1">
+                        </div>
+                        <input type="range" id="loanTermRange" min="1" max="5" value="3" step="1">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="interestRate">Процентная ставка (% годовых):</label>
+                        <div class="input-with-icon">
+                            <span class="icon">%</span>
+                            <input type="number" id="interestRate" min="1" max="30" value="12" step="0.1">
+                        </div>
+                        <input type="range" id="interestRateRange" min="1" max="30" value="12" step="0.1">
+                    </div>
+
+                    <button id="calculateBtn" class="calculate-btn">
+                        <span class="btn-text">Рассчитать выплаты</span>
+                        <span class="btn-loader">⏳</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="results-section">
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">📊</div>
+                        <h3>Ежемесячный платеж</h3>
+                        <div class="amount" id="monthlyPayment">-</div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="card-icon">💵</div>
+                        <h3>Общая сумма выплат</h3>
+                        <div class="amount" id="totalPayment">-</div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="card-icon">💸</div>
+                        <h3>Переплата по кредиту</h3>
+                        <div class="amount" id="overpayment">-</div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h2>График платежей</h2>
+                    <div class="chart-container">
+                        <canvas id="paymentChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="table-section">
+                    <h2>Детальная таблица выплат</h2>
+                    <div class="table-container">
+                        <table id="paymentTable">
+                            <thead>
+                                <tr>
+                                    <th>Месяц</th>
+                                    <th>Остаток долга</th>
+                                    <th>Платеж по основному долгу</th>
+                                    <th>Проценты</th>
+                                    <th>Общий платеж</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentTableBody">
+                                <!-- Данные будут заполнены через JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <!-- Подключаем наш скрипт в конце body -->
+    <script src="script.js"></script>
+</body>
+</html>
