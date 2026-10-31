@@ -1,0 +1,11 @@
+# Файлы IDE (VS Code, WebStorm)
+.vscode/
+.idea/
+
+# Системный мусор
+.DS_Store
+Thumbs.db
+
+# Если вдруг решите использовать Node.js (npm)
+node_modules/
+npm-debug.log
